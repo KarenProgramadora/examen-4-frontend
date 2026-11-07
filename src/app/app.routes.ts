@@ -1,6 +1,6 @@
-
 import { Routes } from '@angular/router';
 import { Estudiantes } from './pages/estudiantes/estudiantes';
+import { Mascotas } from './pages/mascotas/mascotas';
 
 export const routes: Routes = [
   {
@@ -11,5 +11,9 @@ export const routes: Routes = [
   {
     path: 'estudiantes',
     component: Estudiantes
+  },
+  {
+    path: 'mascotas',
+    component: Mascotas
   }
 ];
