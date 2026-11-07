@@ -1,5 +1,8 @@
 # Examen 4 - Frontend CRUD ITM
 
+LINK DEL VIDEO - Karen Cardona 
+https://youtu.be/_oZnTQqUS3E
+
 Aplicación frontend desarrollada con Angular para consumir la API REST del proyecto backend del examen 4.
 
 El proyecto utiliza una estructura compartida para que cada integrante del equipo pueda desarrollar el módulo correspondiente a una entidad, manteniendo un mismo diseño y una integración uniforme con el backend.
