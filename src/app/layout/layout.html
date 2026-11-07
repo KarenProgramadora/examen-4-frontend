@@ -1,0 +1,70 @@
+
+<div class="app-container">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <div>
+        <h2>AdminPanel</h2>
+        <span>Gestión de información</span>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <span class="menu-title">MENÚ PRINCIPAL</span>
+
+      <nav class="navigation">
+
+        <a routerLink="/estudiantes" routerLinkActive="active">
+          <span class="menu-icon">🎓</span>
+          <span>Estudiantes</span>
+        </a>
+
+        <a routerLink="/empleados" routerLinkActive="active">
+          <span class="menu-icon">👨‍💼</span>
+          <span>Empleados</span>
+        </a>
+
+        <a routerLink="/mascotas" routerLinkActive="active">
+          <span class="menu-icon">🐾</span>
+          <span>Mascotas</span>
+        </a>
+
+        <a routerLink="/personas" routerLinkActive="active">
+          <span class="menu-icon">👥</span>
+          <span>Personas</span>
+        </a>
+
+        <a routerLink="/productos" routerLinkActive="active">
+          <span class="menu-icon">📦</span>
+          <span>Productos</span>
+        </a>
+
+        <a routerLink="/vehiculos" routerLinkActive="active">
+          <span class="menu-icon">🚗</span>
+          <span>Vehículos</span>
+        </a>
+
+      </nav>
+    </div>
+
+    <div class="sidebar-footer">
+      <span>Frontend conectado a FastAPI</span>
+      <span class="status-indicator">● API</span>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <span class="topbar-label">SISTEMA DE ADMINISTRACIÓN</span>
+        <h1>Panel de gestión</h1>
+      </div>
+    </header>
+
+    <section class="page-content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+
+</div>

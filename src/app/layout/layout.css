@@ -1,0 +1,183 @@
+
+/* Estructura general */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6fa;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Menú lateral */
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: #17243b;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 25px 18px;
+  box-sizing: border-box;
+}
+
+/* Identidad del sistema */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 8px 35px;
+  border-bottom: 1px solid #344158;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  background: #3978e8;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.brand h2 {
+  font-size: 19px;
+  margin: 0 0 5px;
+}
+
+.brand span {
+  font-size: 11px;
+  color: #aab5c8;
+}
+
+/* Navegación */
+.menu-section {
+  margin-top: 35px;
+}
+
+.menu-title {
+  display: block;
+  color: #8998b1;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navigation a {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #c2ccda;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navigation a:hover {
+  background: #293a58;
+  color: #ffffff;
+}
+
+.navigation a.active {
+  background: #3978e8;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.menu-icon {
+  width: 22px;
+  text-align: center;
+  font-size: 17px;
+}
+
+/* Pie del menú */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 20px 8px 5px;
+  border-top: 1px solid #344158;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #aab5c8;
+  font-size: 11px;
+}
+
+.status-indicator {
+  color: #56d69a;
+}
+
+/* Área principal */
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.topbar {
+  background: #ffffff;
+  padding: 25px 35px;
+  border-bottom: 1px solid #e6eaf0;
+}
+
+.topbar-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #8390a5;
+  font-weight: bold;
+}
+
+.topbar h1 {
+  margin: 7px 0 0;
+  font-size: 24px;
+  color: #17243b;
+}
+
+.page-content {
+  padding: 30px 35px;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 750px) {
+  .sidebar {
+    width: 190px;
+    padding: 20px 12px;
+  }
+
+  .topbar {
+    padding: 20px;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .navigation {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sidebar-footer {
+    margin-top: 20px;
+  }
+}
