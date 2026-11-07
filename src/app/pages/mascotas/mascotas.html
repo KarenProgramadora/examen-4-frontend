@@ -1,0 +1,241 @@
+<div class="students-page">
+
+  <div class="page-heading">
+    <div>
+      <span class="eyebrow">REFUGIO</span>
+      <h2>Mascotas</h2>
+      <p>Administra, consulta y actualiza las mascotas en adopcion.</p>
+    </div>
+
+    <button class="btn btn-primary" (click)="cancelarEdicion()">
+      + Nueva mascota
+    </button>
+  </div>
+
+  <!-- Mensajes -->
+  @if (mensaje) {
+    <div class="alert success">{{ mensaje }}</div>
+  }
+
+  @if (error) {
+    <div class="alert danger">{{ error }}</div>
+  }
+
+  <!-- Busqueda por UUID -->
+  <section class="panel search-panel">
+    <div class="section-heading">
+      <div>
+        <h3>Buscar mascota</h3>
+        <p>Consulta un registro mediante su identificador UUID.</p>
+      </div>
+      <span class="tag">GET por ID</span>
+    </div>
+
+    <div class="search-form">
+      <input
+        type="text"
+        [(ngModel)]="busquedaId"
+        placeholder="Ingresa el UUID de la mascota"
+      />
+
+      <button class="btn btn-secondary" (click)="buscarPorId()">
+        Buscar
+      </button>
+    </div>
+
+    @if (mascotaSeleccionada && !editando) {
+      <div class="student-found">
+        <strong>Mascota encontrada:</strong>
+        {{ mascotaSeleccionada.nombre }}
+        - {{ mascotaSeleccionada.especie }}
+        - {{ mascotaSeleccionada.edad_meses }} meses
+        - ingreso {{ mascotaSeleccionada.fecha_ingreso }}
+      </div>
+    }
+  </section>
+
+  <!-- Formulario -->
+  <section class="panel form-panel">
+    <div class="section-heading">
+      <div>
+        <h3>{{ editando ? 'Actualizar mascota' : 'Registrar mascota' }}</h3>
+        <p>
+          {{ editando
+            ? 'Modifica la informacion de la mascota seleccionada.'
+            : 'Completa los campos para registrar una nueva mascota.' }}
+        </p>
+      </div>
+
+      <span class="tag">{{ editando ? 'PUT' : 'POST' }}</span>
+    </div>
+
+    <form (ngSubmit)="guardarMascota()" #mascotaForm="ngForm">
+
+      <div class="form-grid">
+
+        <div class="form-field">
+          <label for="nombre">Nombre</label>
+          <input
+            id="nombre"
+            name="nombre"
+            type="text"
+            [(ngModel)]="formulario.nombre"
+            minlength="1"
+            maxlength="100"
+            required
+            placeholder="Nombre"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="especie">Especie</label>
+          <input
+            id="especie"
+            name="especie"
+            type="text"
+            [(ngModel)]="formulario.especie"
+            minlength="1"
+            maxlength="50"
+            required
+            placeholder="Perro, Gato..."
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="edad_meses">Edad (meses)</label>
+          <input
+            id="edad_meses"
+            name="edad_meses"
+            type="number"
+            [(ngModel)]="formulario.edad_meses"
+            min="0"
+            required
+            placeholder="Edad en meses"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="fecha_ingreso">Fecha de ingreso</label>
+          <input
+            id="fecha_ingreso"
+            name="fecha_ingreso"
+            type="date"
+            [(ngModel)]="formulario.fecha_ingreso"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="esterilizado">Esterilizado</label>
+          <input
+            id="esterilizado"
+            name="esterilizado"
+            type="checkbox"
+            [(ngModel)]="formulario.esterilizado"
+          />
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="mascotaForm.invalid"
+        >
+          {{ editando ? 'Guardar cambios' : 'Registrar mascota' }}
+        </button>
+
+        @if (editando) {
+          <button
+            type="button"
+            class="btn btn-light"
+            (click)="cancelarEdicion()"
+          >
+            Cancelar
+          </button>
+        }
+      </div>
+
+    </form>
+  </section>
+
+  <!-- Tabla -->
+  <section class="panel table-panel">
+
+    <div class="section-heading">
+      <div>
+        <h3>Listado de mascotas</h3>
+        <p>Registros almacenados en la base de datos.</p>
+      </div>
+
+      <button class="btn btn-secondary" (click)="obtenerMascotas()">
+        Actualizar listado
+      </button>
+    </div>
+
+    @if (cargando) {
+      <p class="loading">Consultando mascotas...</p>
+    } @else {
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Identificador UUID</th>
+              <th>Nombre</th>
+              <th>Especie</th>
+              <th>Edad (meses)</th>
+              <th>Esterilizado</th>
+              <th>Fecha de ingreso</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for (mascota of mascotas; track mascota.id) {
+              <tr>
+                <td class="uuid">{{ mascota.id }}</td>
+                <td>{{ mascota.nombre }}</td>
+                <td>{{ mascota.especie }}</td>
+                <td>{{ mascota.edad_meses }}</td>
+                <td>{{ mascota.esterilizado ? 'Si' : 'No' }}</td>
+                <td>{{ mascota.fecha_ingreso }}</td>
+
+                <td>
+                  <div class="table-actions">
+                    <button
+                      class="btn-edit"
+                      (click)="editarMascota(mascota)"
+                    >
+                      Editar
+                    </button>
+
+                    <button
+                      class="btn-delete"
+                      (click)="eliminarMascota(mascota)"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="7" class="empty">
+                  No hay mascotas registradas.
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footer">
+        Total de mascotas: <strong>{{ mascotas.length }}</strong>
+      </div>
+    }
+
+  </section>
+
+</div>
