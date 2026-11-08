@@ -3,6 +3,10 @@
 LINK DEL VIDEO - Karen Cardona 
 https://youtu.be/_oZnTQqUS3E
 
+LINK VIDEO - ALEJANDRO JARAMILLO AGUDELO
+[Examen4Frontend - Google Chrome 2026-11-07 18-56-41.zip](https://github.com/user-attachments/files/34530984/Examen4Frontend.-.Google.Chrome.2026-11-07.18-56-41.zip)
+
+
 Aplicación frontend desarrollada con Angular para consumir la API REST del proyecto backend del examen 4.
 
 El proyecto utiliza una estructura compartida para que cada integrante del equipo pueda desarrollar el módulo correspondiente a una entidad, manteniendo un mismo diseño y una integración uniforme con el backend.
