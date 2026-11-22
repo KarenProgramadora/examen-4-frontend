@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "dist/examen-4-frontend/browser",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
