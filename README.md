@@ -156,4 +156,17 @@ feat/vehiculos
 
 ---
 
+## Modulo Vehiculos (Jose David Quintero)
+
+Pantalla `/vehiculos` con CRUD completo contra el backend (GET lista, GET por id, POST, PUT y DELETE) usando HttpClient.
+
+Para probarlo:
+
+1. Levantar el backend en `http://localhost:8000` (`uvicorn main:app --reload`), con CORS abierto para `http://localhost:4200`.
+2. Levantar el frontend con `npm start` (requiere Node.js 22.12 o superior).
+3. Abrir `http://localhost:4200/vehiculos`.
+
+El filtro por UUID muestra el registro o informa que no se encontró. Con la API apagada, la pantalla informa que no hay conexión con el backend.
+
+
 **Proyecto académico - Examen 4 - ITM**
